@@ -1,9 +1,11 @@
 global <<< require \prelude-ls
 require! <[fs commander]>
 
-err, files <- fs.readdir "#__dirname/commands"
-files
-|> filter -> it.match /.ls$/
+"#__dirname/commands"
+|> fs.readdir-sync
+|> filter (is /.ls$/)
 |> each -> new (require "./commands/#it") commander
 
+process.argv.2 = \list unless process.argv.2?
 commander.parse process.argv
+

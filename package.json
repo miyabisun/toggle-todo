@@ -18,11 +18,14 @@
   },
   "homepage": "https://github.com/miyabisun/node-cli#readme",
   "bin": {
-    "mycommand": "index.js"
+    "todo": "index.js"
   },
   "dependencies": {
+    "async": "^2.0.0-rc.5",
     "commander": "^2.9.0",
     "livescript": "^1.4.0",
-    "prelude-ls": "^1.1.2"
+    "moment": "^2.13.0",
+    "prelude-ls": "^1.1.2",
+    "sqlite3": "^3.1.4"
   }
 }
