@@ -1,9 +1,10 @@
 require! <[moment]>
 require! <[
   ../classes/command-common.ls
-  ../classes/database.ls
-  ../functions/pause.ls
+  ../classes/log.ls
+  ../functions/database.ls
 ]>
+pause = {log, database} |> require \../functions/pause.ls
 
 module.exports = class command-pause extends command-common
   command: "pause <ids...>"

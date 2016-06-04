@@ -1,8 +1,9 @@
 require! <[
   ../classes/command-common.ls
-  ../classes/database.ls
-  ../functions/add.ls
+  ../classes/log.ls
+  ../functions/database.ls
 ]>
+add = {log, database} |> require \../functions/add.ls
 
 module.exports = class command-add extends command-common
   command: "add <names...>"

@@ -1,9 +1,10 @@
 require! <[
   ../classes/command-common.ls
-  ../classes/database.ls
-  ../functions/list.ls
-  ../functions/short-list.ls
+  ../classes/log.ls
+  ../functions/database.ls
 ]>
+list = {log, database} |> require \../functions/list.ls
+short-list = {log, database} |> require \../functions/short-list.ls
 
 module.exports = class command-list extends command-common
   version: \1.0.0

@@ -1,8 +1,9 @@
 require! <[
   ../classes/command-common.ls
-  ../classes/database.ls
-  ../functions/start.ls
+  ../classes/log.ls
+  ../functions/database.ls
 ]>
+start = {log, database} |> require \../functions/start.ls
 
 module.exports = class command-start extends command-common
   command: "start <ids...>"

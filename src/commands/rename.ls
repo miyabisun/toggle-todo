@@ -1,8 +1,9 @@
 require! <[
   ../classes/command-common.ls
-  ../classes/database.ls
-  ../functions/rename.ls
+  ../classes/log.ls
+  ../functions/database.ls
 ]>
+rename = {log, database} |> require \../functions/rename.ls
 
 module.exports = class command-rename extends command-common
   command: "rename <id> <name>"

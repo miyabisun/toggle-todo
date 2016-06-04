@@ -1,9 +1,6 @@
 require! <[moment]>
-require! <[
-  ../classes/database.ls
-]>
 
-module.exports = ->
+module.exports = ({log, database})-> ->
   err, rows <- database.db.all """
     SELECT *
     FROM todo
@@ -11,7 +8,7 @@ module.exports = ->
   """
   output = (prefix, {id, name, modified}:row)-->
     "[#prefix] #id: #name (#{modified |> moment.unix >> (.from-now!)})"
-    |> console~log
+    |> log.output
   rows
   |> filter (.is_ended) >> (is 1)
   |> each output \Ended

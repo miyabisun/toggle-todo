@@ -1,9 +1,10 @@
 require! <[
   ../classes/command-common.ls
-  ../classes/database.ls
-  ../functions/refresh.ls
-  ../functions/list.ls
+  ../classes/log.ls
+  ../functions/database.ls
 ]>
+refresh = {log, database} |> require \../functions/refresh.ls
+list = {log, database} |> require \../functions/list.ls
 
 module.exports = class command-refresh extends command-common
   command: "refresh"

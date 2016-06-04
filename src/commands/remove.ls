@@ -1,9 +1,10 @@
 require! <[
   ../classes/command-common.ls
-  ../classes/database.ls
-  ../functions/remove.ls
-  ../functions/refresh.ls
+  ../classes/log.ls
+  ../functions/database.ls
 ]>
+remove = {log, database} |> require \../functions/remove.ls
+refresh = {log, database} |> require \../functions/refresh.ls
 
 module.exports = class command-remove extends command-common
   command: "remove [ids...]"

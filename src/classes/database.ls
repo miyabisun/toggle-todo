@@ -1,9 +1,9 @@
 require! <[fs async]>
 sqlite3 = require \sqlite3 .verbose!
 
-module.exports = new class database
-  ->
-    @db = new sqlite3.Database "#{process.env.HOME}/.todo"
+module.exports = class database
+  (name)->
+    @db = new sqlite3.Database name
   needed_tables: (cb)->
     fs.readdir-sync "#__dirname/../tables/"
     |> filter (is /\.sql$/)

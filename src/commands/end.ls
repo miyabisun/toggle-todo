@@ -1,8 +1,9 @@
 require! <[
   ../classes/command-common.ls
-  ../classes/database.ls
-  ../functions/end.ls
+  ../classes/log.ls
+  ../functions/database.ls
 ]>
+end = {log, database} |> require \../functions/end.ls
 
 module.exports = class command-end extends command-common
   command: "end <ids...>"
