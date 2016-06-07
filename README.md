@@ -11,8 +11,8 @@ CLIのToDo管理ツールです
 # Installation
 
 ```bash
-$ git clone https://github.com/m-ohata/todo.git
-$ cd todo.git
+$ git clone https://github.com/miyabisun/todo-cli
+$ cd todo-cli
 $ npm install -g
 ```
 
