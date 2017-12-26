@@ -18,8 +18,7 @@
   },
   "homepage": "https://github.com/miyabisun/todo-cli",
   "bin": {
-    "todo": "bin/todo.js",
-    "task": "bin/task.js"
+    "todo": "bin/todo.js"
   },
   "dependencies": {
     "async": "^2.0.0-rc.5",
