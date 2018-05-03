@@ -4,19 +4,21 @@ todo:
   subcommands: [add, end, list, next, pause, refresh, remove-all, remove, rename, start]
 add:
   command: "add <names...>"
-  description: "Add task."
+  description: Add task.
   alias: a
   options:
     - ["-s, --start", "With started."]
     - ["-e, --end", "With ended."]
 end:
   command: "end <ids...>"
-  description: "End task."
+  description: End task.
   alias: e
 list:
-  command: "list"
-  description: "Output task list."
+  command: list
+  description: Output task list.
   alias: ls
   options:
     - ["-s, --short", "Show short list."]
-
+next:
+  command: next
+  description: Output task of ones.
