@@ -38,7 +38,6 @@
     "ls-lint": "github:miyabisun/ls-lint",
     "mocha": "^2.5.3",
     "optionator": "^0.8.2",
-    "proxyquire": "^2.0.1",
     "source-map": "^0.7.2",
     "watch": "^1.0.2"
   }
