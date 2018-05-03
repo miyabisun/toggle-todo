@@ -1,15 +1,18 @@
-require! <[
-  ../classes/command-common.ls
-  ../classes/log.ls
-  ../functions/database.ls
-]>
-next = {log, database} |> require \../functions/next.ls
+require! {
+  ramda: R
+  \../classes/command.ls : Common
+  \../modules/tasks.ls : load
+  \../modules/log.ls
+  \../modules/relative-time.ls
+}
 
-module.exports = class command-list extends command-common
+module.exports = class List extends Common
   version: \1.0.0
   command: "next"
   description: "Output task."
-  action: ->
-    <- database.migrate
-    next!
-
+  action: (a, b, path) ->
+    load path .tasks
+    |> R.group-by (.status)
+    |> (-> it.doing or it.new)
+    |> R.when (-> it), ([task]) ->
+      log.output "#{task.name} (#{relative-time task.modified})"
