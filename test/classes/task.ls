@@ -14,6 +14,21 @@ describe file, ->
     specify "instance is Task", ->
       Task.from {} |> expect >> (.to.be.an.instanceof Task)
 
+  describe "properties (empty object)", ->
+    task = Task.from {}
+    [
+      * \id, 1
+      * \name, ""
+      * \status, \new
+      * \isStarted, no
+      * \isEnded, no
+    ].for-each ([name, val]) ->
+      specify name, ->
+        expect task.(name) .to.equal val
+    <[modified created]>.for-each (name) ->
+      specify name, ->
+        expect task.(name) .to.be.an.instanceof DateTime
+
   describe \properties, ->
     data =
       id: 1

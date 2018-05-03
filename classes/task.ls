@@ -5,8 +5,7 @@ require! {
 
 columns = <[id name status created modified]>
 module.exports = class Task
-  (@task) ->
-    columns.for-each ~> @[it] = @[it]
+  (@task) -> columns.for-each ~> @[it] = @[it]
   @from = (it = {}) -> new Task it
   id:~
     -> @task.id
@@ -20,11 +19,11 @@ module.exports = class Task
   is-started:~ -> @status in <[doing done]>
   is-ended:~ -> @status is \done
   created:~
-    -> DateTime.fromISO @task.created
-    (time) -> @task.created = (time or DateTime.local!).toISO!
+    -> DateTime.fromISO (@task.created or DateTime.local!.toISO!)
+    (time) -> @task.created = time.toISO!
   modified:~
-    -> DateTime.fromISO @task.modified
-    (time) -> @task.modified = (time or DateTime.local!).toISO!
+    -> DateTime.fromISO (@task.modified or DateTime.local!.toISO!)
+    (time) -> @task.modified = time.toISO!
   value-of: -> @task
   update: (values = {}) ->
     (values <<< modified: DateTime.local!)
