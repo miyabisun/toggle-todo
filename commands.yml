@@ -31,3 +31,6 @@ pause:
 refresh:
   command: refresh
   description: Refresh all tasks id.
+remove-all:
+  command: remove-all
+  description: Remove todo-file at home directory.
