@@ -1,9 +1,8 @@
 require! {
   chai: {expect}
-  proxyquire
   \../../classes/tasks.ls : Tasks
+  \../../commands/remove.ls : command
 }
-command = proxyquire \../../commands/remove.ls, {\../modules/log.ls : output: ->}
 
 file = "test#{__filename - /^.*test/}"
 describe file, ->
@@ -23,21 +22,21 @@ describe file, ->
         ..save!
 
     specify "done items", ->
-      command [], {end: yes, refresh: no}, path
+      command ids: [], {end: yes, refresh: no}, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 2
 
     specify "done items (with refresh)", ->
-      command [], {end: yes, refresh: yes}, path
+      command ids: [], {end: yes, refresh: yes}, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 2
 
     specify "id", ->
-      command [1, 3], {end: no, refresh: no}, path
+      command ids: <[1 3]>, {end: no, refresh: no}, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 1
 
     specify "id (with refresh)", ->
-      command [1, 3], {end: no, refresh: yes}, path
+      command ids: <[1 3]>, {end: no, refresh: yes}, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 1

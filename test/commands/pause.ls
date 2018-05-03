@@ -1,9 +1,8 @@
 require! {
   chai: {expect}
-  proxyquire
   \../../classes/tasks.ls : Tasks
+  \../../commands/pause.ls : command
 }
-command = proxyquire \../../commands/pause.ls, {\../modules/log.ls : output: ->}
 
 file = "test#{__filename - /^.*test/}"
 describe file, ->
@@ -23,30 +22,30 @@ describe file, ->
         ..save!
 
     specify "one item (not stated)", ->
-      command [1], {all: no}, path
+      command ids: <[1]>, {all: no}, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
       expect tasks.tasks.0.status .to.equal \new
 
     specify "one item (started)", ->
-      command [2], {all: no}, path
+      command ids: <[2]>, {all: no}, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
       expect tasks.tasks.1.status .to.equal \new
 
     specify "one item (ended)", ->
-      command [3], {all: no}, path
+      command ids: <[3]>, {all: no}, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
       expect tasks.tasks.2.status .to.equal \new
 
     specify "some items", ->
-      command [1, 2, 3], {all: no}, path
+      command ids: <[1, 2, 3]>, {all: no}, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
 
     specify "all stated tasks", ->
-      command [], {all: yes}, path
+      command ids: [], {all: yes}, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
       expect tasks.tasks.0.status .to.equal \new

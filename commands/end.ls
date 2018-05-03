@@ -1,18 +1,18 @@
 require! {
-  \../modules/log.ls
   \../modules/tasks.ls : load
+  \../functions/to-int.ls
 }
 
-module.exports = (ids, _, path) ->
+module.exports = ({ids}:args, options, log, path) ->
   tasks = load path
-  ids.for-each (id) ->
+  ids.map to-int .for-each (id) ->
     task = tasks.find id
     switch
     | not task =>
-      log.output "[Error] not found task (id = #{id})"
+      log.info "[Error] not found task (id = #{id})"
     | task.status is \done =>
-      log.output "[Error] #{task.id}: #{task.name} (already #{task.status})"
+      log.info "[Error] #{task.id}: #{task.name} (already #{task.status})"
     | _ =>
       task.update status: \done
-      log.output "[End] #{task.id}: #{task.name}"
+      log.info "[End] #{task.id}: #{task.name}"
   tasks.save!

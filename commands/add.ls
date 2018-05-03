@@ -1,9 +1,8 @@
 require! {
-  \../modules/log.ls
   \../modules/tasks.ls : load
 }
 
-module.exports = (names, {start, end}:options, path) ->
+module.exports = ({names}:args, {start, end}:options, log, path) ->
   tasks = load path
   status =
     | end => \done
@@ -11,5 +10,5 @@ module.exports = (names, {start, end}:options, path) ->
     | _ => \new
   names.for-each (name) ->
     {id} = tasks.add {name, status}
-    log.output "[Add] #{id}: #{name} (#{status})}"
+    log.info "[Add] #{id}: #{name} (#{status})}"
   tasks.save!

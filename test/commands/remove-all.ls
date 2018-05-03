@@ -1,9 +1,8 @@
 require! {
   chai: {expect}
-  proxyquire
   \../../classes/tasks.ls : Tasks
+  \../../commands/remove-all.ls : command
 }
-command = proxyquire \../../commands/remove-all.ls, {\../modules/log.ls : output: ->}
 
 file = "test#{__filename - /^.*test/}"
 describe file, ->
@@ -23,6 +22,6 @@ describe file, ->
         ..save!
 
     specify "successful", ->>
-      await command void, void, path
+      await command void, void, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.empty

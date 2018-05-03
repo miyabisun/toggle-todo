@@ -1,51 +1,54 @@
 todo:
   command: todo
   version: 0.2.0
-  subcommands: [add, end, list, next, pause, refresh, remove-all, remove, rename, start]
+  subcommands: [list, add, end, next, pause, refresh, remove-all, remove, rename, start]
+list:
+  desc: Output task list.
+  alias: ls
+  options:
+    - ["-s, --short", "Show short list."]
 add:
-  command: "add <names...>"
-  description: Add task.
+  desc: Add task.
   alias: a
+  arguments:
+    - ["<names...>", "target task ids."]
   options:
     - ["-s, --start", "With started."]
     - ["-e, --end", "With ended."]
 end:
-  command: "end <ids...>"
-  description: End task.
+  desc: End task.
   alias: e
-list:
-  command: list
-  description: Output task list.
-  alias: ls
-  options:
-    - ["-s, --short", "Show short list."]
+  arguments:
+    - ["<ids...>", "target task ids."]
 next:
-  command: next
-  description: Output task of ones.
+  desc: Output task of ones.
 pause:
-  command: "pause [ids...]"
-  description: Pause task.
+  desc: Pause task.
   alias: p
+  arguments:
+    - ["[ids...]", "target task ids."]
   options:
     - ["-a, --all", "Pause all tasks."]
 refresh:
-  command: refresh
-  description: Refresh all tasks id.
+  desc: Refresh all tasks id.
 remove-all:
-  command: remove-all
-  description: Remove todo-file at home directory.
+  desc: Remove todo-file at home directory.
 remove:
-  command: "remove [ids...]"
-  description: Remove task from list.
+  desc: Remove task from list.
   alias: rm
+  arguments:
+    - ["[ids...]", "target task ids."]
   options:
     - ["-e, --end", "Delete all ended tasks."]
-    - ["-r, --refresh", "Refresh all tasks after delete."]
+    - ["-r, --refresh", "Delete all ended tasks."]
 rename:
-  command: "rename <id> <name>"
-  description: Rename task.
+  desc: Rename task.
   alias: mv
+  arguments:
+    - ["<id>", "target task id."]
+    - ["<name>", "new task name."]
 start:
-  command: "start <ids...>"
-  description: Start task.
+  desc: Start task.
   alias: s
+  arguments:
+    - ["<ids...>", "target task ids."]

@@ -1,9 +1,8 @@
 require! {
   chai: {expect}
-  proxyquire
   \../../classes/tasks.ls : Tasks
+  \../../commands/end.ls : command
 }
-command = proxyquire \../../commands/end.ls, {\../modules/log.ls : output: ->}
 
 file = "test#{__filename - /^.*test/}"
 describe file, ->
@@ -23,27 +22,27 @@ describe file, ->
         ..save!
 
     specify "one item (not start)", ->
-      command [1], void, path
+      command ids: [1], void, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
       expect tasks.tasks.0.name .to.equal \hoge
       expect tasks.tasks.0.status .to.equal \done
 
     specify "one item (started)", ->
-      command [2], void, path
+      command ids: [2], void, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
       expect tasks.tasks.1.name .to.equal \piko
       expect tasks.tasks.1.status .to.equal \done
 
     specify "one item (ended)", ->
-      command [3], void, path
+      command ids: [3], void, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
       expect tasks.tasks.2.name .to.equal \fuga
       expect tasks.tasks.2.status .to.equal \done
 
     specify "some items", ->
-      command [1, 2, 3], void, path
+      command ids: [1, 2, 3], void, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3

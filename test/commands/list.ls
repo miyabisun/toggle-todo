@@ -1,10 +1,9 @@
 require! {
   chai: {expect}
-  proxyquire
   \../../classes/tasks.ls : Tasks
   \../../classes/task.ls : Task
+  \../../commands/list.ls : command
 }
-command = proxyquire \../../commands/list.ls, {\../modules/log.ls : output: ->}
 
 file = "test#{__filename - /^.*test/}"
 describe file, ->
@@ -24,11 +23,11 @@ describe file, ->
         ..save!
 
     specify "successful (long)", ->
-      command [], {short: no}, path
+      command [], {short: no}, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
 
     specify "successful (short)", ->
-      command [], {short: yes}, path
+      command [], {short: yes}, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3

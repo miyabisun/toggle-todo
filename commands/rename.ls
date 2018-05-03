@@ -1,17 +1,18 @@
 require! {
-  \../modules/log.ls
   \../modules/tasks.ls : load
+  \../functions/to-int
 }
 
-module.exports = ([id, name], _, path) ->
+module.exports = ({id: sid, name}:args, _, log, path) ->
   tasks = load path
+  id = sid |> to-int
   task = tasks.find id
   switch
   | not task =>
-    log.output "[Error] not found task (id = #{id})"
+    log.info "[Error] not found task (id = #{id})"
   | name is task.name =>
-    log.output "[Rename] #{id}: #{name} (already #{JSON.stringify name})"
+    log.info "[Rename] #{id}: #{name} (already #{JSON.stringify name})"
   | _ =>
-    log.output "[Rename] #{id}: #{name} (old: #{JSON.stringify task.name})"
+    log.info "[Rename] #{id}: #{name} (old: #{JSON.stringify task.name})"
     task.update {name}
     tasks.save!

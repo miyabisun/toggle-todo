@@ -1,9 +1,8 @@
 require! {
   chai: {expect}
-  proxyquire
   \../../classes/tasks.ls : Tasks
+  \../../commands/rename.ls : command
 }
-command = proxyquire \../../commands/rename.ls, {\../modules/log.ls : output: ->}
 
 file = "test#{__filename - /^.*test/}"
 describe file, ->
@@ -23,18 +22,18 @@ describe file, ->
         ..save!
 
     specify "successful", ->
-      command [1, \foo], void, path
+      command {id: \1, name: \foo}, void, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
       expect tasks.tasks.0.name .to.equal \foo
 
     specify "failed (equal)", ->
-      command [2, \piko], void, path
+      command {id: \2, name: \piko}, void, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
       expect tasks.tasks.1.name .to.equal \piko
 
     specify "failed (notfound)", ->
-      command [5, \foo], void, path
+      command {id: \5, name: \foo}, void, {info: ->}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
