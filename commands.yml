@@ -13,4 +13,10 @@ end:
   command: "end <ids...>"
   description: "End task."
   alias: e
+list:
+  command: "list"
+  description: "Output task list."
+  alias: ls
+  options:
+    - ["-s, --short", "Show short list."]
 

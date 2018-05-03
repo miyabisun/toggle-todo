@@ -1,19 +1,19 @@
 require! {
   chai: {expect}
+  proxyquire
   \../../classes/tasks.ls : Tasks
   \../../classes/task.ls : Task
-  \../../commands/list.ls : Main
 }
+command = proxyquire \../../commands/list.ls, {\../modules/log.ls : output: ->}
 
 file = "test#{__filename - /^.*test/}"
 describe file, ->
   describe \type, ->
     specify "is function", ->
-      expect Main .to.be.a \function
+      expect command .to.be.a \function
 
-  describe.skip \list, ->
+  describe \list, ->
     path = "#{__dirname}/../../tmp/test.yml"
-    command = new Main!
 
     before-each ->>
       try await Tasks.remove path
@@ -24,11 +24,11 @@ describe file, ->
         ..save!
 
     specify "successful (long)", ->
-      command.action {short: no}, path
+      command {short: no}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
 
     specify "successful (short)", ->
-      command.action {short: yes}, path
+      command {short: yes}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
