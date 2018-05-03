@@ -1,23 +1,14 @@
-require! <[moment]>
+require! {
+  ramda: R
+  \../modules/relative-time.ls
+}
 
-module.exports = ({log, database})-> ->
-  err, rows <- database.db.all """
-    SELECT *
-    FROM todo
-    ORDER BY is_ended DESC, is_started ASC, modified ASC
-  """
-  output = (prefix, {id, name, modified}:row)-->
-    "[#prefix] #id: #name (#{modified |> moment.unix >> (.from-now!)})"
-    |> log.output
-  rows
-  |> filter (.is_ended) >> (is 1)
-  |> each output \Ended
-  rows
-  |> filter (.is_ended) >> (is 0)
-  |> filter (.is_started) >> (is 0)
-  |> each output \ToDo
-  rows
-  |> filter (.is_ended) >> (is 0)
-  |> filter (.is_started) >> (is 1)
-  |> each output \Started
-
+module.exports = (log, tasks) ->
+  list = tasks |> R.group-by (.status)
+  [
+    * \done, \Done
+    * \new, \ToDo
+    * \doing, \Doing
+  ].for-each ([type, prefix]) ->
+    list.(type)?.for-each ({id, name, modified}) ->
+      log.output "[#prefix] #id: #name (#{relative-time modified})"
