@@ -3,17 +3,19 @@
 CLIのToDo管理ツールです
 
 ## Dependences
+
 - [LiveScript](http://livescript.net/)
-- [commander](https://www.npmjs.com/package/commander)
-- [sqlite3](https://www.sqlite.org/index.html)
-- [node-cli](https://github.com/miyabisun/node-cli)
+- [caporal](https://www.npmjs.com/package/caporal)
 
 # Installation
 
+インストールにはNode.jsが必要です。
+
 ```bash
-$ git clone https://github.com/miyabisun/todo-cli
-$ cd todo-cli
-$ npm install -g
+$ node -v
+v9.10.1
+
+$ npm install -g github:miyabisun/todo-cli
 ```
 
 # Usage
@@ -21,25 +23,32 @@ $ npm install -g
 ```bash
 $ todo -h
 
-  Usage: todo [options] [command]
+   todo 0.2.0
 
+   USAGE
 
-  Commands:
+     todo <command> [options]
 
-    add|a [options] <names...>    Add task.
-    end|e <ids...>                End task.
-    list|ls [options]             Output task list.
-    pause-all                     Pause all tasks.
-    pause|p <ids...>              Pause task.
-    refresh                       Refresh all tasks id.
-    remove-all                    Remove todo-file at home directory.
-    remove|rm [options] [ids...]  Remove task from list.
-    rename|mv <id> <name>         Rename task.
-    start|s <ids...>              Start task.
+   COMMANDS
 
-  Options:
+     list                    (ls) Output task list.
+     add <names...>          (a) Add task.
+     end <ids...>            (e) End task.
+     next                    Output task of ones.
+     pause [ids...]          (p) Pause task.
+     refresh                 Refresh all tasks id.
+     remove-all              Remove todo-file at home directory.
+     remove [ids...]         (rm) Remove task from list.
+     rename <id> <name>      (mv) Rename task.
+     start <ids...>          (s) Start task.
+     help <command>          Display help for a specific command
 
-    -h, --help     output usage information
-    -V, --version  output the version number
+   GLOBAL OPTIONS
+
+     -h, --help         Display help
+     -V, --version      Display version
+     --no-color         Disable colors
+     --quiet            Quiet mode - only displays warn and error messages
+     -v, --verbose      Verbose mode - will also output debug messages
 ```
 

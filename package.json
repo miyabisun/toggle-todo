@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/miyabisun/todo-cli",
   "bin": {
-    "todo": "index.ls"
+    "todo": "index.js"
   },
   "dependencies": {
     "async": "^2.0.0-rc.5",
