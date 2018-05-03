@@ -45,3 +45,7 @@ rename:
   command: "rename <id> <name>"
   description: Rename task.
   alias: mv
+start:
+  command: "start <ids...>"
+  description: Start task.
+  alias: s
