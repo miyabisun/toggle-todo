@@ -28,3 +28,6 @@ pause:
   alias: p
   options:
     - ["-a, --all", "Pause all tasks."]
+refresh:
+  command: refresh
+  description: Refresh all tasks id.
