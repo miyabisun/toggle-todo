@@ -11,7 +11,7 @@ describe file, ->
     specify "is function", ->
       expect Main .to.be.a \function
 
-  describe.skip \end, ->
+  describe.skip \refresh, ->
     path = "#{__dirname}/../../tmp/test.yml"
     command = new Main!
 
@@ -25,7 +25,7 @@ describe file, ->
         ]
         ..save!
 
-    specify "one item (not start)", ->
+    specify "successful", ->
       command.action void, void, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
