@@ -48,8 +48,7 @@ describe file, ->
   describe \save, ->
     path = "#{__dirname}/../../tmp/test.yml"
     specify "remove -> load -> save -> load", ->>
-      try
-        await Tasks.remove path
+      try await Tasks.remove path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.empty
       tasks.add name: \hoge

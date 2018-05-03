@@ -24,7 +24,6 @@ module.exports = class Task
   modified:~
     -> DateTime.fromISO (@task.modified or DateTime.local!.toISO!)
     (time) -> @task.modified = time.toISO!
-  value-of: -> @task
   update: (values = {}) ->
     (values <<< modified: DateTime.local!)
     |> R.to-pairs |> R.for-each ([key, val]) ~> @[key] = val

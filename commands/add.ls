@@ -1,18 +1,24 @@
 require! {
-  \../classes/command-common.ls : CommandCommon
-  \../classes/log.ls
+  \../classes/command.ls : Common
+  \../modules/log.ls : log
+  \../modules/tasks.ls : load
 }
-add = {log, database} |> require \../functions/add.ls
 
-module.exports = class CommandAdd extends CommandCommon
+module.exports = class Add extends Common
   command: "add <names...>"
   description: "Add task."
   alias: \a
   options:
-    * ["-s, --start", "With start."]
+    * "-s, --start", "With started."
+    * "-e, --end", "With ended."
     ...
-  action: (names, {start}:options) ->
-    <- database.migrate
-    names
-    |> map (name) -> {name, start}
-    |> each add
+  action: (names, {start, end}:options, path) ->
+    tasks = load path
+    status =
+      | end => \done
+      | start => \doing
+      | _ => \new
+    names.for-each (name) ->
+      {id} = tasks.add {name, status}
+      log.output "[Add] #{id}: #{name} (#{status})}"
+    tasks.save!

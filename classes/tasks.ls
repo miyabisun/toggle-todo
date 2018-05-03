@@ -28,4 +28,4 @@ module.exports = class Tasks
   add: (seed = {}) -> seed |> (<<< id: @new-id) |> Task.from |> R.tap ~> @tasks.push it
   remove: (id) -> @tasks = @tasks |> R.reject (.id is id)
   refresh: -> @tasks.for-each (task, i) -> task.id = i + 1
-  save: -> Tasks.save @path, @tasks
+  save: -> Tasks.save @path, @tasks.map (.task)

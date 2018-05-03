@@ -2,4 +2,4 @@ require! {
   \../classes/tasks.ls : Tasks
 }
 
-module.exports = -> Tasks.load "#{__dirname}/../tmp/tasks.yml"
+module.exports = (path = "#{__dirname}/../tmp/tasks.yml") -> Tasks.load path
