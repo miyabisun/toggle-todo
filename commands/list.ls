@@ -1,22 +1,18 @@
-require! <[
-  ../classes/command-common.ls
-  ../classes/log.ls
-  ../functions/database.ls
-]>
-list = {log, database} |> require \../functions/list.ls
-short-list = {log, database} |> require \../functions/short-list.ls
+require! {
+  \../classes/command.ls : Common
+  \../modules/tasks.ls : load
+  \../modules/log.ls
+  \../functions/list.ls
+}
 
-module.exports = class command-list extends command-common
+module.exports = class List extends Common
   version: \1.0.0
   command: "list"
   description: "Output task list."
   alias: \ls
   options:
-    * ["-s, --short", "Show short list."]
+    * "-s, --short", "Show short list."
     ...
-  action: ({short}:options)->
-    <- database.migrate
-    switch
-    | short => short-list!
-    | _ => list!
-
+  action: ({short}:options, path) ->
+    tasks = load path
+    list log, tasks.asced
