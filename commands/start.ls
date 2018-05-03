@@ -18,9 +18,9 @@ module.exports = class Start extends Common
       | task.status is \doing =>
         log.output "[Error] #{task.id}: #{task.name} (already doing)"
       | task.status is \done =>
-        task.status = \doing
+        task.update status: \doing
         log.output "[Start] #{task.id}: #{task.name} (done -> doing)"
       | _ =>
-        task.status = \doing
+        task.update status: \doing
         log.output "[Start] #{task.id}: #{task.name}"
     tasks.save!

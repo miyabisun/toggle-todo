@@ -18,6 +18,6 @@ module.exports = class End extends Common
       | task.status is \done =>
         log.output "[Error] #{task.id}: #{task.name} (already done)"
       | _ =>
-        task.status = \done
+        task.update status: \done
         log.output "[End] #{task.id}: #{task.name}"
     tasks.save!
