@@ -16,7 +16,7 @@ test = (file) ->> await output "mocha --colors #{file}"
 hr = -> console.info "---------- ---------- ----------"
 
 [
-  [<[classes functions commands]>, "test/"]
+  [<[classes commands modules]>, "test/"]
   [<[test]>, ""]
 ]
 |> P.each ([dirs, test-pre]) ->
