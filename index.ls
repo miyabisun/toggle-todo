@@ -8,4 +8,3 @@ require! <[fs commander]>
 
 process.argv.2 = \list unless process.argv.2?
 commander.parse process.argv
-
