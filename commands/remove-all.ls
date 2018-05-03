@@ -1,10 +1,15 @@
-require! <[fs]>
-require! \../classes/command-common.ls
+require! {
+  ramda: R
+  \../classes/command.ls : Common
+  \../modules/log.ls
+  \../modules/tasks.ls : load
+  \../classes/tasks.ls : Tasks
+}
 
-module.exports = class command-remove-all extends command-common
+module.exports = class RemoveAll extends Common
   command: "remove-all"
   description: "Remove todo-file at home directory."
-  action: ->
-    fs.unlink-sync "#{process.env.HOME}/.todo"
-    console.log "Removed all tasks."
-
+  action: (a, b, path) ->>
+    tasks-file = load path .path
+    await Tasks.remove tasks-file
+    log.output "Removed all tasks."
