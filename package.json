@@ -2,8 +2,9 @@
   "name": "node-cli",
   "version": "1.0.0",
   "description": "node-cli on LiveScript",
-  "main": "index.js",
+  "main": "command/todo",
   "scripts": {
+    "start": "node command/todo",
     "lint": "find . -name '*.ls' | xargs ls-lint",
     "test": "mocha ./test/**/*.ls",
     "watch": "lsc bin/watch.ls"
@@ -20,11 +21,11 @@
   },
   "homepage": "https://github.com/miyabisun/todo-cli",
   "bin": {
-    "todo": "bin/todo"
+    "todo": "command/todo.js"
   },
   "dependencies": {
     "async": "^2.0.0-rc.5",
-    "commander": "^2.9.0",
+    "cas": "0.0.3",
     "del": "^3.0.0",
     "javascript-time-ago": "^1.0.30",
     "js-yaml": "^3.11.0",
@@ -38,6 +39,7 @@
     "ls-lint": "github:miyabisun/ls-lint",
     "mocha": "^2.5.3",
     "optionator": "^0.8.2",
+    "proxyquire": "^2.0.1",
     "source-map": "^0.7.2",
     "watch": "^1.0.2"
   }
