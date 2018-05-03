@@ -3,6 +3,7 @@ require! {
   \../modules/tasks.ls : load
   \../modules/log.ls
   \../functions/list.ls
+  \../functions/short-list.ls
 }
 
 module.exports = class List extends Common
@@ -15,4 +16,6 @@ module.exports = class List extends Common
     ...
   action: ({short}:options, path) ->
     tasks = load path
-    list log, tasks.asced
+    switch
+    | short => short-list log, tasks.asced
+    | _ => list log, tasks.asced

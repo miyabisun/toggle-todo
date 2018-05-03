@@ -27,3 +27,8 @@ describe file, ->
       command.action {short: no}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
+
+    specify "successful (short)", ->
+      command.action {short: yes}, path
+      tasks = Tasks.load path
+      expect tasks.tasks .to.be.an \array .that.be.length-of 3
