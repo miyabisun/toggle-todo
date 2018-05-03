@@ -1,15 +1,14 @@
 require! {
   ramda: R
-  luxon: {DateTime}
   \../modules/relative-time.ls
 }
 
 module.exports = (log, tasks) ->
   list = tasks |> R.group-by (.status)
   [
-    * \done, "Ended tasks."
+    * \done, "Done tasks."
     * \new, "ToDo."
-    * \doing, "Started tasks."
+    * \doing, "Doing tasks."
   ].for-each ([type, title]) ->
     if list.(type)
       log.output title
