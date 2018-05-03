@@ -1,0 +1,16 @@
+todo:
+  command: todo
+  version: 0.2.0
+  subcommands: [add, end, list, next, pause, refresh, remove-all, remove, rename, start]
+add:
+  command: "add <names...>"
+  description: "Add task."
+  alias: a
+  options:
+    - ["-s, --start", "With started."]
+    - ["-e, --end", "With ended."]
+end:
+  command: "end <ids...>"
+  description: "End task."
+  alias: e
+
