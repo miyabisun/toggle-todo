@@ -3,7 +3,7 @@ require! {
   luxon: {DateTime}
 }
 
-columns = <[id name isStarted isEnded created modified]>
+columns = <[id name status created modified]>
 module.exports = class Task
   (@task) ->
     columns.for-each ~> @[it] = @[it]
@@ -14,12 +14,11 @@ module.exports = class Task
   name:~
     -> @task.name
     (val) -> @task.name = val or ""
-  is-started:~
-    -> @task.is_started
-    (val) -> @task.is_started = Boolean val
-  is-ended:~
-    -> @task.is_ended
-    (val) -> @task.is_ended = Boolean val
+  status:~
+    -> @task.status
+    (val) -> @task.status = val or \new
+  is-started:~ -> @status in <[doing done]>
+  is-ended:~ -> @status is \done
   created:~
     -> DateTime.fromISO @task.created
     (time) -> @task.created = (time or DateTime.local!).toISO!

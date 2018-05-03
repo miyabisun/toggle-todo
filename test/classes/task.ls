@@ -18,8 +18,7 @@ describe file, ->
     data =
       id: 1
       name: \create-item
-      is_started: no
-      is_ended: no
+      status: \doing
       created: DateTime.local!.toISO!
       modified: DateTime.local!.toISO!
     task = Task.from data
@@ -29,6 +28,10 @@ describe file, ->
           expect task.(key) .to.be.an.instanceof DateTime
         else
           expect task.(P.camelize key) .to.equal data.(key)
+    specify \is-started, ->
+      expect task.is-started .to.equal yes
+    specify \is-ended, ->
+      expect task.is-ended .to.equal no
 
   describe \methods, ->
     describe \update, ->
@@ -36,19 +39,21 @@ describe file, ->
       task = Task.from do
         id: 1
         name: \create-item
-        is_started: no
-        is_ended: no
+        status: \new
         created: DateTime.local!.toISO!
         modified: modified.toISO!
       [
         * \id, 30
         * \name, \created-item
-        * \isStarted, yes
-        * \isEnded, yes
+        * \status, \done
       ]
       |> R.tap R.from-pairs >> -> task.update it
       |> R.for-each ([key, val]) ->
         specify key, ->
           expect task.(key) .to.equal val
+      specify \is-started, ->
+        expect task.is-started .to.equal yes
+      specify \is-ended, ->
+        expect task.is-ended .to.equal yes
       specify \modified, ->
         expect DateTime.fromISO(task.modified).value-of! .to.be.above modified.value-of!
