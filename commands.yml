@@ -22,3 +22,9 @@ list:
 next:
   command: next
   description: Output task of ones.
+pause:
+  command: "pause [ids...]"
+  description: Pause task.
+  alias: p
+  options:
+    - ["-a, --all", "Pause all tasks."]
