@@ -11,6 +11,6 @@ module.exports = (log, tasks) ->
     * \doing, "Doing tasks."
   ].for-each ([type, title]) ->
     if list.(type)
-      log.output title
+      log.info title
       list.(type)?.for-each ({id, name, modified}) ->
-        log.output "  #id: #name (#{relative-time modified})"
+        log.info "  #id: #name (#{relative-time modified})"

@@ -11,4 +11,4 @@ module.exports = (log, tasks) ->
     * \doing, \Doing
   ].for-each ([type, prefix]) ->
     list.(type)?.for-each ({id, name, modified}) ->
-      log.output "[#prefix] #id: #name (#{relative-time modified})"
+      log.info "[#prefix] #id: #name (#{relative-time modified})"
