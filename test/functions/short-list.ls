@@ -11,7 +11,7 @@ describe file, ->
     specify "is function", ->
       expect main .to.be.a \function
 
-  describe.skip "output test", ->
+  describe "output test", ->
     specify "all empty", ->
       result = []
       main (output: -> result.push it), []
