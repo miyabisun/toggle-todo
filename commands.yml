@@ -41,3 +41,7 @@ remove:
   options:
     - ["-e, --end", "Delete all ended tasks."]
     - ["-r, --refresh", "Refresh all tasks after delete."]
+rename:
+  command: "rename <id> <name>"
+  description: Rename task.
+  alias: mv
