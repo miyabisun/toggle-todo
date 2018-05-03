@@ -25,6 +25,7 @@
   "dependencies": {
     "async": "^2.0.0-rc.5",
     "commander": "^2.9.0",
+    "del": "^3.0.0",
     "js-yaml": "^3.11.0",
     "livescript": "github:gkz/LiveScript",
     "luxon": "^1.2.0",
