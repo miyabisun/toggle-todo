@@ -32,9 +32,10 @@ describe file, ->
       expect tasks.find(123)?.name .to.equal \hoge
     specify \add, ->
       tasks = Tasks.from "test", [Task.from(id: 123, name: \hoge), Task.from(id: 234, name: \piko)]
-      tasks.add name: \fuga
+      task = tasks.add name: \fuga
       expect tasks.tasks .to.be.length-of 3
-      expect tasks.find(235)?.name .to.equal \fuga
+      expect task.id .to.equal 235
+      expect task.name .to.equal \fuga
     specify \remove, ->
       tasks = Tasks.from "test", [Task.from(id: 123, name: \hoge), Task.from(id: 234, name: \piko)]
       tasks.remove 234
