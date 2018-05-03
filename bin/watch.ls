@@ -11,7 +11,7 @@ output = (command) -> new Promise (resolve) ->
       ..stdout.pipe process.stdout
       ..stderr.pipe process.stderr
       ..on \close -> resolve yes
-lint = (file) ->> await output "ls-lint #{file}"
+lint = (...files) ->> await output "ls-lint #{files.join " "}"
 test = (file) ->> await output "mocha --colors #{file}"
 hr = -> console.info "---------- ---------- ----------"
 
@@ -26,7 +26,10 @@ hr = -> console.info "---------- ---------- ----------"
       m.on \changed, (f, curr, prev) ->>
         return unless f is /\.ls$/
         file = f.replace ex, dir
-        await lint file
+        if test-pre
+          await lint file, "#{test-pre}#{file}"
+        else
+          await lint file.replace(/^test\//, ""), file
         await test "#{test-pre}#{file}"
         hr!
       process.on \SIGINT, -> m.stop!
