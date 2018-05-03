@@ -34,3 +34,10 @@ refresh:
 remove-all:
   command: remove-all
   description: Remove todo-file at home directory.
+remove:
+  command: "remove [ids...]"
+  description: Remove task from list.
+  alias: rm
+  options:
+    - ["-e, --end", "Delete all ended tasks."]
+    - ["-r, --refresh", "Refresh all tasks after delete."]
