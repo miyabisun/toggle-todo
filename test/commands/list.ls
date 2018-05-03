@@ -24,11 +24,11 @@ describe file, ->
         ..save!
 
     specify "successful (long)", ->
-      command {short: no}, path
+      command [], {short: no}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3
 
     specify "successful (short)", ->
-      command {short: yes}, path
+      command [], {short: yes}, path
       tasks = Tasks.load path
       expect tasks.tasks .to.be.an \array .that.be.length-of 3

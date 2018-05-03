@@ -1,6 +1,5 @@
 require! {
-  \../classes/command.ls : Common
-  \../modules/log.ls : log
+  \../modules/log.ls
   \../modules/tasks.ls : load
 }
 
