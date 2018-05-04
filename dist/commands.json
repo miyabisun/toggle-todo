@@ -1,7 +1,6 @@
 {
   "todo": {
     "command": "todo",
-    "version": "0.2.0",
     "subcommands": [
       "list",
       "add",

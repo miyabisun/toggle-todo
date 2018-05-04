@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
+const pkg = require('./package.json')
 const commands = require('./dist/commands.json')
 const program = require('caporal')
 
-program.version(commands.todo.version)
+program.version(pkg.version)
 commands.todo.subcommands.forEach(name => {
   const spec = commands[name]
   let prog = program.command(name, `${spec.alias ? `(${spec.alias}) ` : ''}${spec.desc}`)

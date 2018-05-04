@@ -1,6 +1,5 @@
 todo:
   command: todo
-  version: 0.2.0
   subcommands: [list, add, end, next, pause, refresh, remove-all, remove, rename, start]
 list:
   desc: Output task list.
