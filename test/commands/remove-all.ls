@@ -11,7 +11,7 @@ describe file, ->
       expect command .to.be.ok
 
   describe \remove-all, ->
-    path = "#{__dirname}/../../tmp/test.yml"
+    path = "#{__dirname}/../../tmp/test.json"
 
     before-each ->>
       try await Tasks.remove path

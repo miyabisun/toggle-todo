@@ -1,7 +1,5 @@
 require! {
   chai: {expect}
-  fs
-  \js-yaml : yaml
   \../../src/classes/tasks.ls : Tasks
   \../../src/classes/task.ls : Task
 }
@@ -46,7 +44,7 @@ describe file, ->
       expect tasks.tasks.map (.id) .to.deep.equal [1, 2]
 
   describe \save, ->
-    path = "#{__dirname}/../../tmp/test.yml"
+    path = "#{__dirname}/../../tmp/test.json"
     specify "remove -> load -> save -> load", ->>
       try await Tasks.remove path
       tasks = Tasks.load path

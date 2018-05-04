@@ -12,7 +12,7 @@ describe file, ->
       expect command .to.be.a \function
 
   describe \list, ->
-    path = "#{__dirname}/../../tmp/test.yml"
+    path = "#{__dirname}/../../tmp/test.json"
 
     before-each ->>
       try await Tasks.remove path

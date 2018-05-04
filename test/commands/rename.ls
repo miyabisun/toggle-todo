@@ -11,7 +11,7 @@ describe file, ->
       expect command .to.be.a \function
 
   describe \rename, ->
-    path = "#{__dirname}/../../tmp/test.yml"
+    path = "#{__dirname}/../../tmp/test.json"
 
     before-each ->>
       try await Tasks.remove path

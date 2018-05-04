@@ -2,6 +2,6 @@
 var Tasks;
 Tasks = require('../classes/tasks');
 module.exports = function(path){
-  path == null && (path = process.env.HOME + "/.tasks.yml");
+  path == null && (path = process.env.HOME + "/.tasks.json");
   return Tasks.load(path);
 };

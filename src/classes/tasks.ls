@@ -1,6 +1,5 @@
 require! {
   fs, del
-  \js-yaml : yaml
   ramda: R
   \./task : Task
 }
@@ -8,10 +7,10 @@ require! {
 module.exports = class Tasks
   (@path, @tasks) ->
   @from = (path, tasks = []) -> new Tasks path, tasks
-  @save = (path, tasks = []) -> fs.write-file-sync path, yaml.safe-dump tasks
+  @save = (path, tasks = []) -> fs.write-file-sync path, JSON.stringify tasks, null, 2
   @load = (path) ->
     try
-      seed = yaml.safe-load fs.read-file-sync path
+      seed = JSON.parse fs.read-file-sync path
       Tasks.from path, seed.map Task.from
     catch
       Tasks.save path; Tasks.load path
