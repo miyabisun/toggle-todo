@@ -1,6 +1,6 @@
 {
   "name": "node-cli",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "node-cli on LiveScript",
   "main": "index.js",
   "scripts": {
