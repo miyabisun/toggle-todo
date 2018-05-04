@@ -4,6 +4,7 @@
   "description": "node-cli on LiveScript",
   "main": "index.js",
   "scripts": {
+    "build": "lsc bin/build.ls",
     "lint": "find . -name '*.ls' | xargs ls-lint",
     "test": "mocha ./test/**/*.ls",
     "watch": "lsc bin/watch.ls"
@@ -35,7 +36,9 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "fs-readdir-recursive": "^1.1.0",
     "ls-lint": "github:miyabisun/ls-lint",
+    "mkdir-recursive": "^0.4.0",
     "mocha": "^2.5.3",
     "optionator": "^0.8.2",
     "source-map": "^0.7.2",
