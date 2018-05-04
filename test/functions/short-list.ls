@@ -1,8 +1,8 @@
 require! {
   chai: {expect}
   luxon: {DateTime}
-  \../../classes/task.ls : Task
-  \../../functions/short-list.ls : main
+  \../../src/classes/task.ls : Task
+  \../../src/functions/short-list.ls : main
 }
 
 file = "test#{__filename - /^.*test/}"

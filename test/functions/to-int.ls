@@ -1,6 +1,6 @@
 require! {
   chai: {expect}
-  \../../functions/to-int.ls : main
+  \../../src/functions/to-int.ls : main
 }
 
 file = "test#{__filename - /^.*test/}"

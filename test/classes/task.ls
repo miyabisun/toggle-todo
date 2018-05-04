@@ -3,7 +3,7 @@ require! {
   luxon: {DateTime}
   ramda: R
   \prelude-ls : P
-  \../../classes/task.ls : Task
+  \../../src/classes/task.ls : Task
 }
 
 file = "test#{__filename - /^.*test/}"

@@ -3,7 +3,7 @@ require! {
   luxon: {DateTime}
   \javascript-time-ago : TimeAgo
   \javascript-time-ago/locale/ja
-  \../../functions/relative-time.ls
+  \../../src/functions/relative-time.ls
 }
 TimeAgo.locale ja
 main = relative-time new TimeAgo \ja

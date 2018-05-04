@@ -1,7 +1,7 @@
 require! {
   chai: {expect}
-  \../../classes/tasks.ls : Tasks
-  \../../commands/rename.ls : command
+  \../../src/classes/tasks.ls : Tasks
+  \../../src/commands/rename.ls : command
 }
 
 file = "test#{__filename - /^.*test/}"

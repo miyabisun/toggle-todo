@@ -2,8 +2,8 @@ require! {
   chai: {expect}
   fs
   \js-yaml : yaml
-  \../../classes/tasks.ls : Tasks
-  \../../classes/task.ls : Task
+  \../../src/classes/tasks.ls : Tasks
+  \../../src/classes/task.ls : Task
 }
 
 file = "test#{__filename - /^.*test/}"

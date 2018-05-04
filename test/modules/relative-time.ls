@@ -1,7 +1,7 @@
 require! {
   chai: {expect}
   luxon: {DateTime}
-  \../../modules/relative-time.ls : main
+  \../../src/modules/relative-time.ls : main
 }
 
 file = "test#{__filename - /^.*test/}"
