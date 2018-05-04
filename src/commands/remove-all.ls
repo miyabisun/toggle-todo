@@ -1,6 +1,6 @@
 require! {
-  \../modules/tasks.ls : load
-  \../classes/tasks.ls : Tasks
+  \../modules/tasks : load
+  \../classes/tasks : Tasks
 }
 
 module.exports = (args, _, log, path) ->>

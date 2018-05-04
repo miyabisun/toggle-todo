@@ -1,5 +1,5 @@
 require! {
-  \../modules/tasks.ls : load
+  \../modules/tasks : load
 }
 
 module.exports = ({names}:args, {start, end}:options, log, path) ->

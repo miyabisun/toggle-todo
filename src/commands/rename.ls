@@ -1,5 +1,5 @@
 require! {
-  \../modules/tasks.ls : load
+  \../modules/tasks : load
   \../functions/to-int
 }
 

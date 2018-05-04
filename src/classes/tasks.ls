@@ -2,7 +2,7 @@ require! {
   fs, del
   \js-yaml : yaml
   ramda: R
-  \./task.ls : Task
+  \./task : Task
 }
 
 module.exports = class Tasks

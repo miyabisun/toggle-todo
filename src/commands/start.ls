@@ -1,6 +1,6 @@
 require! {
-  \../modules/tasks.ls : load
-  \../functions/to-int.ls
+  \../modules/tasks : load
+  \../functions/to-int
 }
 
 module.exports = ({ids}:args, _, log, path) ->

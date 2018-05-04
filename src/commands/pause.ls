@@ -1,7 +1,7 @@
 require! {
-  \../functions/short-list.ls
-  \../modules/tasks.ls : load
-  \../functions/to-int.ls
+  \../functions/short-list
+  \../modules/tasks : load
+  \../functions/to-int
 }
 
 module.exports = ({ids}:args, {all}:options, log, path) ->

@@ -1,7 +1,7 @@
 require! {
   ramda: R
-  \../functions/short-list.ls
-  \../modules/tasks.ls : load
+  \../functions/short-list
+  \../modules/tasks : load
   \../functions/to-int
 }
 

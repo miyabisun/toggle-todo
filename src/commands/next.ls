@@ -1,7 +1,7 @@
 require! {
   ramda: R
-  \../modules/tasks.ls : load
-  \../modules/relative-time.ls
+  \../modules/tasks : load
+  \../modules/relative-time
 }
 
 module.exports = (args, _, log, path) ->
