@@ -12,18 +12,9 @@ module.exports = function(args, _, log, path){
     switch (false) {
     case !!task:
       return log.info("[Error] not found task (id = " + id + ")");
-    case task.status !== 'doing':
-      return log.info("[Error] " + task.id + ": " + task.name + " (already doing)");
-    case task.status !== 'done':
-      task.update({
-        status: 'doing'
-      });
-      return log.info("[Start] " + task.id + ": " + task.name + " (done -> doing)");
     default:
-      task.update({
-        status: 'doing'
-      });
-      return log.info("[Start] " + task.id + ": " + task.name);
+      log.info("[Start] " + task.id + ": " + task.name + " (" + task.status + " -> doing)");
+      return task['do']();
     }
   });
   return tasks.save();

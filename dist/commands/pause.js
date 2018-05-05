@@ -14,9 +14,7 @@ module.exports = function(args, options, log, path){
       return it.status === 'doing';
     }).forEach(function(task){
       log.info("[Pause] " + task.id + ": " + task.name + "  (" + task.status + " -> new)");
-      return task.update({
-        status: 'new'
-      });
+      return task.pause();
     });
     break;
   default:
@@ -26,13 +24,9 @@ module.exports = function(args, options, log, path){
       switch (false) {
       case !!task:
         return log.info("[Error] not found task (id = " + id + ")");
-      case task.status !== 'new':
-        return log.info("[Error] " + task.id + ": " + task.name + " (already " + task.status + ")");
       default:
         log.info("[Pause] " + task.id + ": " + task.name + " (" + task.status + " -> new)");
-        return task.update({
-          status: 'new'
-        });
+        return task.pause();
       }
     });
   }

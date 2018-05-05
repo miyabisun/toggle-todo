@@ -4,13 +4,13 @@ load = require('../modules/tasks');
 list = require('../functions/list');
 shortList = require('../functions/short-list');
 module.exports = function(args, options, log, path){
-  var short, tasks;
-  short = options.short;
+  var long, tasks;
+  long = options.long;
   tasks = load(path);
   switch (false) {
-  case !short:
-    return shortList(log, tasks.asced);
-  default:
+  case !long:
     return list(log, tasks.asced);
+  default:
+    return shortList(log, tasks.asced);
   }
 };

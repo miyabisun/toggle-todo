@@ -93,5 +93,38 @@ module.exports = Task = (function(){
     R.toPairs(
     (values.modified = DateTime.local(), values)));
   };
+  Task.prototype.pause = function(){
+    var this$ = this;
+    return function(it){
+      if (this$.status !== it) {
+        return this$.update({
+          status: it
+        });
+      }
+    }(
+    'new');
+  };
+  Task.prototype['do'] = function(){
+    var this$ = this;
+    return function(it){
+      if (this$.status !== it) {
+        return this$.update({
+          status: it
+        });
+      }
+    }(
+    'doing');
+  };
+  Task.prototype.done = function(){
+    var this$ = this;
+    return function(it){
+      if (this$.status !== it) {
+        return this$.update({
+          status: it
+        });
+      }
+    }(
+    'done');
+  };
   return Task;
 }());

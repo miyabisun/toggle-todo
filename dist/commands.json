@@ -19,8 +19,8 @@
     "alias": "ls",
     "options": [
       [
-        "-s, --short",
-        "Show short list."
+        "-l, --long",
+        "Show long list."
       ]
     ]
   },

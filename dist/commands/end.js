@@ -12,13 +12,9 @@ module.exports = function(args, options, log, path){
     switch (false) {
     case !!task:
       return log.info("[Error] not found task (id = " + id + ")");
-    case task.status !== 'done':
-      return log.info("[Error] " + task.id + ": " + task.name + " (already " + task.status + ")");
     default:
-      task.update({
-        status: 'done'
-      });
-      return log.info("[End] " + task.id + ": " + task.name);
+      log.info("[End] " + task.id + ": " + task.name + " (" + task.status + " -> done)");
+      return task.done();
     }
   });
   return tasks.save();

@@ -8,7 +8,7 @@ module.exports = function(log, tasks){
     return it.status;
   })(
   tasks);
-  return [['done', 'Done'], ['new', 'ToDo'], ['doing', 'Doing']].forEach(function(arg$){
+  return [['done', 'done'], ['new', 'todo'], ['doing', 'doing']].forEach(function(arg$){
     var type, prefix, ref$;
     type = arg$[0], prefix = arg$[1];
     return (ref$ = list[type]) != null ? ref$.forEach(function(arg$){
