@@ -10,12 +10,7 @@ module.exports = ({ids}:args, _, log, path) ->
     switch
     | not task =>
       log.info "[Error] not found task (id = #{id})"
-    | task.status is \doing =>
-      log.info "[Error] #{task.id}: #{task.name} (already doing)"
-    | task.status is \done =>
-      task.update status: \doing
-      log.info "[Start] #{task.id}: #{task.name} (done -> doing)"
     | _ =>
-      task.update status: \doing
-      log.info "[Start] #{task.id}: #{task.name}"
+      log.info "[Start] #{task.id}: #{task.name} (#{task.status} -> doing)"
+      task.do!
   tasks.save!
