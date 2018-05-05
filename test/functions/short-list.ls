@@ -18,9 +18,9 @@ describe file, ->
       expect result .to.be.length-of 0
 
     [
-      * \new, \ToDo
-      * \doing, \Doing
-      * \done, \Done
+      * \new, \todo
+      * \doing, \doing
+      * \done, \done
     ].for-each ([status, prefix]) ->
       specify "#{status} task only", ->
         result = []
@@ -34,16 +34,15 @@ describe file, ->
 
     specify "has all task", ->
       result = []
-      tasks = [
-        Task.from name: \taro, status: \new
-        Task.from name: \jiro, status: \doing
-        Task.from name: \saburo, status: \done
-        Task.from name: \siro, status: \done
-        Task.from name: \goro, status: \doing
-        Task.from name: \mutsugoro, status: \new
-      ]
+      tasks =
+        * Task.from name: \taro, status: \new
+        * Task.from name: \jiro, status: \doing
+        * Task.from name: \saburo, status: \done
+        * Task.from name: \siro, status: \done
+        * Task.from name: \goro, status: \doing
+        * Task.from name: \mutsugoro, status: \new
       main (info: -> result.push it), tasks
       expect result .to.be.length-of 6
-      expect result.0 .to.have.string \Done
-      expect result.2 .to.have.string \ToDo
-      expect result.4 .to.have.string \Doing
+      expect result.0 .to.have.string \done
+      expect result.2 .to.have.string \todo
+      expect result.4 .to.have.string \doing

@@ -4,8 +4,8 @@ require! {
   \../functions/short-list
 }
 
-module.exports = (args, {short}:options, log, path) ->
+module.exports = (args, {long}:options, log, path) ->
   tasks = load path
   switch
-  | short => short-list log, tasks.asced
-  | _ => list log, tasks.asced
+  | long => list log, tasks.asced
+  | _ => short-list log, tasks.asced

@@ -23,11 +23,18 @@ describe file, ->
         ..save!
 
     specify "successful (long)", ->
-      command [], {short: no}, {info: ->}, path
-      tasks = Tasks.load path
-      expect tasks.tasks .to.be.an \array .that.be.length-of 3
+      log = []
+      command [], {long: yes}, {info: -> log.push it}, path
+      expect log.0 .to.be.match /Done/
+      expect log.1 .to.be.match /fuga/
+      expect log.2 .to.be.match /ToDo/
+      expect log.3 .to.be.match /hoge/
+      expect log.4 .to.be.match /Doing/
+      expect log.5 .to.be.match /piko/
 
     specify "successful (short)", ->
-      command [], {short: yes}, {info: ->}, path
-      tasks = Tasks.load path
-      expect tasks.tasks .to.be.an \array .that.be.length-of 3
+      log = []
+      command [], {long: no}, {info: -> log.push it}, path
+      expect log.0 .to.be.match /done.*fuga/
+      expect log.1 .to.be.match /todo.*hoge/
+      expect log.2 .to.be.match /doing.*piko/

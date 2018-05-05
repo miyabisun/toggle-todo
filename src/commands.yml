@@ -5,7 +5,7 @@ list:
   desc: Output task list.
   alias: ls
   options:
-    - ["-s, --short", "Show short list."]
+    - ["-l, --long", "Show long list."]
 add:
   desc: Add task.
   alias: a
