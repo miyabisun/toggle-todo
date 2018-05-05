@@ -17,4 +17,6 @@ commands.todo.subcommands.forEach(name => {
   prog = prog.action(require(`./dist/commands/${name}`))
 })
 
+const argv = process.argv
+if (process.argv.length < 3) process.argv.push('list')
 program.parse(process.argv)
