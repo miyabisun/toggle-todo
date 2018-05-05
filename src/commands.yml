@@ -1,6 +1,6 @@
 todo:
   command: todo
-  subcommands: [list, add, end, next, pause, refresh, remove-all, remove, rename, start]
+  subcommands: [list, add, start, end, pause, rename, remove, remove-all, refresh, next, done]
 list:
   desc: Output task list.
   alias: ls
@@ -14,13 +14,16 @@ add:
   options:
     - ["-s, --start", "With started."]
     - ["-e, --end", "With ended."]
+start:
+  desc: Start task.
+  alias: s
+  arguments:
+    - ["<ids...>", "target task ids."]
 end:
   desc: End task.
   alias: e
   arguments:
     - ["<ids...>", "target task ids."]
-next:
-  desc: Output task of ones.
 pause:
   desc: Pause task.
   alias: p
@@ -28,10 +31,12 @@ pause:
     - ["[ids...]", "target task ids."]
   options:
     - ["-a, --all", "Pause all tasks."]
-refresh:
-  desc: Refresh all tasks id.
-remove-all:
-  desc: Remove todo-file at home directory.
+rename:
+  desc: Rename task.
+  alias: mv
+  arguments:
+    - ["<id>", "target task id."]
+    - ["<name>", "new task name."]
 remove:
   desc: Remove task from list.
   alias: rm
@@ -40,14 +45,11 @@ remove:
   options:
     - ["-e, --end", "Delete all ended tasks."]
     - ["-r, --refresh", "Delete all ended tasks."]
-rename:
-  desc: Rename task.
-  alias: mv
-  arguments:
-    - ["<id>", "target task id."]
-    - ["<name>", "new task name."]
-start:
-  desc: Start task.
-  alias: s
-  arguments:
-    - ["<ids...>", "target task ids."]
+remove-all:
+  desc: Remove todo-file at home directory.
+refresh:
+  desc: Refresh all tasks id.
+next:
+  desc: Show current task.
+done:
+  desc: End current task.

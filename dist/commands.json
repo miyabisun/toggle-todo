@@ -4,14 +4,15 @@
     "subcommands": [
       "list",
       "add",
+      "start",
       "end",
-      "next",
       "pause",
-      "refresh",
-      "remove-all",
-      "remove",
       "rename",
-      "start"
+      "remove",
+      "remove-all",
+      "refresh",
+      "next",
+      "done"
     ]
   },
   "list": {
@@ -44,6 +45,16 @@
       ]
     ]
   },
+  "start": {
+    "desc": "Start task.",
+    "alias": "s",
+    "arguments": [
+      [
+        "<ids...>",
+        "target task ids."
+      ]
+    ]
+  },
   "end": {
     "desc": "End task.",
     "alias": "e",
@@ -53,9 +64,6 @@
         "target task ids."
       ]
     ]
-  },
-  "next": {
-    "desc": "Output task of ones."
   },
   "pause": {
     "desc": "Pause task.",
@@ -73,11 +81,19 @@
       ]
     ]
   },
-  "refresh": {
-    "desc": "Refresh all tasks id."
-  },
-  "remove-all": {
-    "desc": "Remove todo-file at home directory."
+  "rename": {
+    "desc": "Rename task.",
+    "alias": "mv",
+    "arguments": [
+      [
+        "<id>",
+        "target task id."
+      ],
+      [
+        "<name>",
+        "new task name."
+      ]
+    ]
   },
   "remove": {
     "desc": "Remove task from list.",
@@ -99,28 +115,16 @@
       ]
     ]
   },
-  "rename": {
-    "desc": "Rename task.",
-    "alias": "mv",
-    "arguments": [
-      [
-        "<id>",
-        "target task id."
-      ],
-      [
-        "<name>",
-        "new task name."
-      ]
-    ]
+  "remove-all": {
+    "desc": "Remove todo-file at home directory."
   },
-  "start": {
-    "desc": "Start task.",
-    "alias": "s",
-    "arguments": [
-      [
-        "<ids...>",
-        "target task ids."
-      ]
-    ]
+  "refresh": {
+    "desc": "Refresh all tasks id."
+  },
+  "next": {
+    "desc": "Show current task."
+  },
+  "done": {
+    "desc": "End current task."
   }
 }

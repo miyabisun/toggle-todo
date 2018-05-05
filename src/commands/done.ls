@@ -10,6 +10,6 @@ module.exports = (args, options, log, path) ->
   |> R.group-by (.status)
   |> (-> it.doing or it.new)
   |> R.when (-> it), ([task]) ->
-    log.info "#{task.name}(#{task.id}) is done"
+    log.info "#{task.name} is done"
     task.done!
   tasks.save!

@@ -11,7 +11,7 @@ module.exports = function(args, options, log, path){
   }, function(arg$){
     var task;
     task = arg$[0];
-    log.info(task.name + "(" + task.id + ") is done");
+    log.info(task.name + " is done");
     return task.done();
   })(
   function(it){
