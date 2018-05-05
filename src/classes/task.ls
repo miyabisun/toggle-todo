@@ -27,3 +27,6 @@ module.exports = class Task
   update: (values = {}) ->
     (values <<< modified: DateTime.local!)
     |> R.to-pairs |> R.for-each ([key, val]) ~> @[key] = val
+  pause: -> \new |> ~> @update status: it if @status isnt it
+  do: -> \doing |> ~> @update status: it if @status isnt it
+  done: -> \done |> ~> @update status: it if @status isnt it

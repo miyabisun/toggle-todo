@@ -72,3 +72,15 @@ describe file, ->
         expect task.is-ended .to.equal yes
       specify \modified, ->
         expect DateTime.fromISO(task.modified).value-of! .to.be.above modified.value-of!
+    [
+      * \pause, \new
+      * \do, \doing
+      * \done, \done
+    ].for-each ([type, status]) ->
+      tasks =
+        * Task.from id: 1, name: \hoge, status: \new
+        * Task.from id: 2, name: \piko, status: \doing
+        * Task.from id: 3, name: \fuga, status: \done
+      tasks
+      |> P.each (.(type)!)
+      |> P.each (.status) >> expect >> (.to.equal status)
