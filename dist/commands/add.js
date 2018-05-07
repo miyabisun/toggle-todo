@@ -22,7 +22,7 @@ module.exports = function(args, options, log, path){
       name: name,
       status: status
     }).id;
-    return log.info("[Add] " + id + ": " + name + " (" + status + ")}");
+    return log.info("[Add] " + id + ": " + name + " (" + status + ")");
   });
   return tasks.save();
 };

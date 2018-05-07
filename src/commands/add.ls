@@ -10,5 +10,5 @@ module.exports = ({names}:args, {start, end}:options, log, path) ->
     | _ => \new
   names.for-each (name) ->
     {id} = tasks.add {name, status}
-    log.info "[Add] #{id}: #{name} (#{status})}"
+    log.info "[Add] #{id}: #{name} (#{status})"
   tasks.save!
